@@ -1,7 +1,7 @@
 echo-rs: Echo microservice Using JAX-RS (Java API for RESTful Web Services)
 ==========================================================================
 Author: Giuseppe Bonocore
-Level: Basic
+Level: Basic__
 Technologies: CDI, JAX-RS  
 Summary: The `echo-rs` demonstrates a simple Echo application, bundled and deployed as a WAR, that uses *JAX-RS* to say Echo the payload.    
 Target Product: JBoss EAP  
