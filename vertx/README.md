@@ -14,3 +14,14 @@ mvn package
 java -jar target/simple-web-application-3.3.3-fat.jar
 
 ```
+
+To run with Docker:
+
+```shell
+vertx/
+
+mvn package
+
+java -jar target/simple-web-application-3.3.3-fat.jar
+
+```

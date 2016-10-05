@@ -1,4 +1,4 @@
-package io.vertx.examples.openshift;
+package it.redhat.osd.vertx;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.json.JsonObject;
@@ -13,7 +13,7 @@ public class MySimpleVerticle extends AbstractVerticle {
       rc.response().end("Welcome");
     });
     router.get("/api").handler(rc -> {
-      rc.response().end(new JsonObject().put("name", "my-awesome-api").put("version", 1).encode());
+      rc.response().end(new JsonObject().put("name", "OSD Awesome API with VertX").put("version", 1).encode());
     });
 
     vertx.createHttpServer()
