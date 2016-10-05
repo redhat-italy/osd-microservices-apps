@@ -1,4 +1,4 @@
-package io.vertx.examples.openshift;
+package it.redhat.osd.vertx;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.json.JsonObject;
