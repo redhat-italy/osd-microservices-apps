@@ -9,7 +9,7 @@
   <version>3.3.3</version>
 
   <properties>
-    <main.verticle>io.vertx.examples.openshift.MySimpleVerticle</main.verticle>
+    <main.verticle>it.redhat.osd.vertx.MySimpleVerticle</main.verticle>
   </properties>
 
   <dependencyManagement>
