@@ -9,6 +9,7 @@ runTwitter.sh
 /build/
 /bin/
 target/
+.vertx/
 
 *.class
 
