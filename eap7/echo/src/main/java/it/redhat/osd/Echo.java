@@ -19,18 +19,22 @@ public class Echo {
     @Inject
     EchoService echoService;
 
-    @GET
-    @Path("/json/{payload}")
-    @Produces({ "application/json" })
-    public String getHelloWorldJSON(@PathParam("payload") String payload) {
-        return "{\"result\":\"" + echoService.createEchoMessage(payload) + "\"}";
-    }
+    
 
     @GET
-    @Path("/xml/{payload}")    
-    @Produces({ "application/xml" })
-    public String getHelloWorldXML(@PathParam("payload") String payload) {
-        return "<xml><result>" + echoService.createEchoMessage(payload) + "</result></xml>";
+    @Path("/")
+    @Produces({ "application/json" })
+    public String getUUIDJSON() {
+    	    		
+         return "{\"result\":\"" + echoService.createUUIDMessage() + "\"}";
+    }
+    
+    @GET
+    @Path("/{payload}")
+    @Produces({ "application/json" })
+    public String getEchoJSON(@PathParam("payload") String payload) {
+    	    		
+         return "{\"result\":\"" + echoService.createEchoMessage(payload) + "\"}";
     }
 
 }
