@@ -1,16 +1,16 @@
-echo-rs: Echo microservice Using JAX-RS (Java API for RESTful Web Services)
+echo-websocket: Echo microservice Using WebSocket
 ==========================================================================
 Author: Giuseppe Bonocore
 Level: Basic    
-Technologies: CDI, JAX-RS    
-Summary: The `echo-rs` demonstrates a simple Echo application, bundled and deployed as a WAR, that uses *JAX-RS* to  Echo the payload.    
+Technologies: CDI, WebSocket    
+Summary: The `displayMessage` demonstrates a simple Echo application, bundled and deployed as a WAR, that uses *WebSocket* to Echo the payload.    
 Target Product: JBoss EAP  
 Source: 
 
 What is it?
 -----------
 
-The `echo-rs` quickstart demonstrates the use of *CDI* and *JAX-RS* in Red Hat JBoss Enterprise Application Platform.
+The `echo-websocket` quickstart demonstrates the use of *CDI* and *WebSocket* in Red Hat JBoss Enterprise Application Platform.
 
 
 System requirements
@@ -45,8 +45,7 @@ Build and Deploy the Quickstart
 Access the application 
 ---------------------
 
-The application is deployed to <http://localhost:8080/echo/>.
-
+The application is deployed to <http://localhost:8080/echo-websocket/>.
 
 
 Undeploy the Archive
