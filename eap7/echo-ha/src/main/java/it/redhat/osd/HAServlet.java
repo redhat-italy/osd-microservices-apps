@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(value="/echo-ha", name="echoha-servlet")
+@WebServlet(value="/", name="echoha-servlet")
 public class HAServlet extends GenericServlet {
 
 	private static final String COUNT_VALUE = "countValue";
