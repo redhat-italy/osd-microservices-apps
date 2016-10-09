@@ -4,8 +4,9 @@
 mvn wildfly-swarm:run
 ```
 
-Then open a browser at:
+Open a browser or use curl to connect to the REST server
 
-```shell
-http://localhost:8080/echo
+```
+curl localhost:8080/api/echo
+{"name":"foo"}
 ```

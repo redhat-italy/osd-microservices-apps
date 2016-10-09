@@ -1,14 +1,6 @@
 echo-websocket: Echo microservice Using WebSocket
 ==========================================================================
-Author: Giuseppe Bonocore
-Level: Basic    
-Technologies: CDI, WebSocket    
-Summary: The `displayMessage` demonstrates a simple Echo application, bundled and deployed as a WAR, that uses *WebSocket* to Echo the payload.    
-Target Product: JBoss EAP  
-Source: 
 
-What is it?
------------
 
 The `echo-websocket` quickstart demonstrates the use of *CDI* and *WebSocket* in Red Hat JBoss Enterprise Application Platform.
 

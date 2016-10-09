@@ -1,14 +1,5 @@
 echo-ha: Echo microservice Using HA
 ==========================================================================
-Author: Giuseppe Bonocore
-Level: Basic    
-Technologies: Servlet, HA    
-Summary: The `echo-ha` demonstrates a simple Echo application, bundled and deployed as a WAR, in high availability.    
-Target Product: JBoss EAP  
-Source: 
-
-What is it?
------------
 
 The `echo-ha` quickstart demonstrates the use of *Servlet* and *HA* in Red Hat JBoss Enterprise Application Platform.
 
