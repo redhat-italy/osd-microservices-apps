@@ -63,9 +63,11 @@ func main() {
 	users = append(users, User{ID: "5", Firstname: "Filippo", Lastname: "Calà", Mail: "fcala@redhat.com"})
 	users = append(users, User{ID: "6", Firstname: "Luca", Lastname: "Bigotta", Mail: "lbigotta@redhat.com"})
 
-	router.HandleFunc("api/users", GetPeopleEndpoint).Methods("GET")
-	router.HandleFunc("api/user/{id}", GetPersonEndpoint).Methods("GET")
-	router.HandleFunc("api/user/{id}", CreatePersonEndpoint).Methods("POST")
-	router.HandleFunc("api/user/{id}", DeletePersonEndpoint).Methods("DELETE")
+	router.HandleFunc("/api/users", GetPeopleEndpoint).Methods("GET")
+	router.HandleFunc("/api/user/{id}", GetPersonEndpoint).Methods("GET")
+	router.HandleFunc("/api/user/{id}", CreatePersonEndpoint).Methods("POST")
+	router.HandleFunc("/api/user/{id}", DeletePersonEndpoint).Methods("DELETE")
+	
 	log.Fatal(http.ListenAndServe(":" + *port, router))
+
 }
