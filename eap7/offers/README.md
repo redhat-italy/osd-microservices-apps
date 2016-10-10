@@ -7,15 +7,14 @@ Summary: The `Offers` microservice demonstrates a simple CRUD application, bundl
 Target Product: JBoss EAP  
 Source: 
 
-What is it?
------------
+## What is it?
+
 =======
 
 The `Offers` quickstart demonstrates the use of *CDI* and *JAX-RS* in Red Hat JBoss Enterprise Application Platform.
 
 
-System requirements
--------------------
+## System requirements
 
 The application this project produces is designed to be run on Red Hat JBoss Enterprise Application Platform 7 or later. 
 
@@ -23,8 +22,8 @@ All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven
 
 
 
-Start the JBoss EAP Server
--------------------------
+## Start the JBoss EAP Server
+
 
 1. Open a command prompt and navigate to the root of the JBoss EAP directory.
 2. The following shows the command line to start the server:
@@ -33,8 +32,8 @@ Start the JBoss EAP Server
         For Windows: EAP7_HOME\bin\standalone.bat
 
  
-Build and Deploy the Quickstart
--------------------------
+## Build and Deploy the Quickstart
+
 
 1. Make sure you have started the JBoss EAP server as described above.
 2. Open a command prompt and navigate to the root directory of this quickstart.
@@ -45,15 +44,9 @@ Build and Deploy the Quickstart
 4. This will deploy `target/jboss-helloworld-rs.war` to the running instance of the server.
 
 
-Access the application 
----------------------
 
-The application is deployed to <http://localhost:8080/echo/>.
+## Undeploy the Archive
 
-
-
-Undeploy the Archive
---------------------
 
 1. Make sure you have started the JBoss EAP server as described above.
 2. Open a command prompt and navigate to the root directory of this quickstart.

@@ -57,6 +57,15 @@ public class OffersEndpoint {
 	      
 	    }
 	    @DELETE
+	    @Path("/offer")
+	    @Produces(MediaType.APPLICATION_JSON)
+	    public List<Offer>  deleteById(Offer toSave) {
+	    	 
+	    	 offersService.deleteById(toSave.getId());
+	         return offersService.list();
+	    }
+	    
+	    @DELETE
 	    @Path("/offer/{id}")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public List<Offer>  deleteById(@PathParam("id") String id) {
