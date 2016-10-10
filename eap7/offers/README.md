@@ -1,16 +1,16 @@
-echo-ha: Echo microservice Using HA
+echo-rs: Echo microservice Using JAX-RS (Java API for RESTful Web Services)
 ==========================================================================
 Author: Giuseppe Bonocore
 Level: Basic    
-Technologies: Servlet, HA    
-Summary: The `echo-ha` demonstrates a simple Echo application, bundled and deployed as a WAR, in high availability.    
+Technologies: CDI, JAX-RS    
+Summary: The `echo-rs` demonstrates a simple Echo application, bundled and deployed as a WAR, that uses *JAX-RS* to  Echo the payload.    
 Target Product: JBoss EAP  
 Source: 
 
 What is it?
 -----------
 
-The `echo-ha` quickstart demonstrates the use of *Servlet* and *HA* in Red Hat JBoss Enterprise Application Platform.
+The `echo-rs` quickstart demonstrates the use of *CDI* and *JAX-RS* in Red Hat JBoss Enterprise Application Platform.
 
 
 System requirements
@@ -45,7 +45,7 @@ Build and Deploy the Quickstart
 Access the application 
 ---------------------
 
-The application is deployed to <http://localhost:8080/echo-ha/>.
+The application is deployed to <http://localhost:8080/echo/>.
 
 
 

@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.redhat.osd.eap</groupId>
-    <artifactId>echo-ha</artifactId>
+    <artifactId>offers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>HA Echo Service with EAP 7</name>
+    <name>RS Offers CRUD Service with EAP 7</name>
 
     <!-- Activate the JBoss Enterprise Maven Repository.
 
@@ -119,18 +119,19 @@
             <scope>provided</scope>
         </dependency>
 
-         <!-- Import the Servlet API, we use provided scope as the API is included in JBoss EAP. -->
+        <!-- Import the JAX-RS API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+            <groupId>org.jboss.spec.javax.ws.rs</groupId>
+            <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
             <scope>provided</scope>
-		</dependency>
+        </dependency>
     </dependencies>
 
     <build>
         <!-- Set the name of the WAR, used as the context root when the app
             is deployed -->
-        <finalName>${project.artifactId}</finalName>
+        <!--<finalName>${project.artifactId}</finalName>-->
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
