@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"github.com/gorilla/mux"
+	"github.com/gorilla/handlers"
 	"flag"
 )
 
@@ -64,10 +65,10 @@ func main() {
 	users = append(users, User{ID: "6", Firstname: "Luca", Lastname: "Bigotta", Mail: "lbigotta@redhat.com"})
 
 	router.HandleFunc("/api/users", GetPeopleEndpoint).Methods("GET")
-	router.HandleFunc("/api/user/{id}", GetPersonEndpoint).Methods("GET")
-	router.HandleFunc("/api/user/{id}", CreatePersonEndpoint).Methods("POST")
-	router.HandleFunc("/api/user/{id}", DeletePersonEndpoint).Methods("DELETE")
-	
-	log.Fatal(http.ListenAndServe(":" + *port, router))
+	router.HandleFunc("/api/users/{id}", GetPersonEndpoint).Methods("GET")
+	router.HandleFunc("/api/users/{id}", CreatePersonEndpoint).Methods("POST")
+	router.HandleFunc("/api/users/{id}", DeletePersonEndpoint).Methods("DELETE")
+
+	log.Fatal(http.ListenAndServe(":" + *port, handlers.CORS()(router)))
 
 }

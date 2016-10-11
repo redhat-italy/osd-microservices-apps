@@ -1,6 +1,12 @@
 users.go: users microservices using Go
 ======================================
 
+## Dependencies
+
+```
+go get github.com/gorilla/mux
+ge get github.com/gorilla/handlers
+```
 ## Usage (from source)
 
 ```
