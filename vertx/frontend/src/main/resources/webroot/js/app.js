@@ -16,25 +16,25 @@
  */
 // Define any routes for the app
 // Note that this app is a single page app, and each partial is routed to using the URL fragment. For example, to select the 'home' route, the URL is http://localhost:8080/jboss-as-kitchensink-angularjs-bootstrap/#/home
-angular.module('kitchensink', [ 'ngRoute', 'membersService','knalli.angular-vertxbus', 'ngAnimate'])
-    .config( [ '$httpProvider','$routeProvider', 'vertxEventBusProvider', function($httpProvider, $routeProvider, vertxEventBusProvider) {
+angular.module('kitchensink', [ 'ngRoute', 'usersService', 'ngAnimate'])
+    .config( [ '$httpProvider','$routeProvider', function($httpProvider, $routeProvider) {
         /*
          * Use a HTTP interceptor to add a nonce to every request to prevent MSIE from caching responses.
          */
-        vertxEventBusProvider
-            .enable()
-            .useReconnect()
-            .useDebug(true)
-            .useUrlServer('http://localhost:8888');
         $httpProvider.interceptors.push('ajaxNonceInterceptor');
 
         $routeProvider.
         // if URL fragment is /home, then load the home partial, with the MembersCtrl controller
         when('/home', {
             templateUrl : 'partials/home.html',
-            controller : MembersCtrl
+            controller : UsersCtrl
         // Add a default route
-        }).otherwise({
+        })
+        .when('/lead', {
+            templateUrl: 'partials/lead.html',
+            controller: UsersCtrl
+        })
+        .otherwise({
             redirectTo : '/home'
         });
 

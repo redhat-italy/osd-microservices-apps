@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 // Define the REST resource service, allowing us to interact with it as a high level service
-angular.module('membersService', ['ngResource']).
-    factory('Members', function($resource){
-  return $resource('http://localhost:8888/rest/members/:memberId', {});
+angular.module('usersService', ['ngResource']).
+    factory('Users', function($resource){
+  return $resource('http://localhost:8081/api/users/:memberId', {});
 });
