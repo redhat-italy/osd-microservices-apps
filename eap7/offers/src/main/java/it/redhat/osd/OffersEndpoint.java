@@ -30,7 +30,7 @@ public class OffersEndpoint {
 	    }
 	    
 	    @GET
-	    @Path("/offer/{id}")
+	    @Path("/offers/{id}")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public Offer retrieveById(@PathParam("id") String id) {
 	    	    		
@@ -38,7 +38,7 @@ public class OffersEndpoint {
 	    }
 	    
 	    @POST
-	    @Path("/offer")
+	    @Path("/offers")
 	    @Consumes(MediaType.APPLICATION_JSON)
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public List<Offer> save(Offer toSave) throws Exception {
@@ -48,7 +48,7 @@ public class OffersEndpoint {
 	    }
 	    
 	    @POST
-	    @Path("/offer/{id}")
+	    @Path("/offers/{id}")
 	    @Consumes(MediaType.APPLICATION_JSON)
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public List<Offer> save(@PathParam("id") String id,Offer toSave) throws Exception {
@@ -57,7 +57,7 @@ public class OffersEndpoint {
 	      
 	    }
 	    @DELETE
-	    @Path("/offer")
+	    @Path("/offers")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public List<Offer>  deleteById(Offer toSave) {
 	    	 
@@ -66,7 +66,7 @@ public class OffersEndpoint {
 	    }
 	    
 	    @DELETE
-	    @Path("/offer/{id}")
+	    @Path("/offers/{id}")
 	    @Produces(MediaType.APPLICATION_JSON)
 	    public List<Offer>  deleteById(@PathParam("id") String id) {
 	    	 

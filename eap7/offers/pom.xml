@@ -125,6 +125,12 @@
             <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+		    <groupId>org.jboss.resteasy</groupId>
+		    <artifactId>resteasy-jaxrs</artifactId>
+		    <version>3.0.16.Final-redhat-1</version>
+		    <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
