@@ -19,3 +19,8 @@ angular.module('usersService', ['ngResource']).
     factory('Users', function($resource){
   return $resource('http://localhost:8081/api/users/:memberId', {});
 });
+
+angular.module('productService', ['ngResource']).
+    factory('Products', function($resource){
+  return $resource('http://localhost:8082/api/products/:Id', {});
+});

@@ -42,6 +42,11 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <properties>
+            <swarm.http.port>8082</swarm.http.port>
+          </properties>
+        </configuration>
       </plugin>
     </plugins>
   </build>
