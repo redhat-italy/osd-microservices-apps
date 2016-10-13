@@ -5,7 +5,7 @@ users.go: users microservices using Go
 
 ```
 go get github.com/gorilla/mux
-ge get github.com/gorilla/handlers
+go get github.com/gorilla/handlers
 ```
 ## Usage (from source)
 
