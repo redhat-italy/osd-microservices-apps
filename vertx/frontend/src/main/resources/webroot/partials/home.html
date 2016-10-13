@@ -98,7 +98,12 @@
     </div>
 
 </div>
-<div class="col-xs-6">
-    <h1>Today Special Offers:</h1>
-
+<div class="col-xs-3">
+    <h1>Special Offers:</h1>
+<em ng-show="offers.length == 0">No offers .</em>
+	 <div class="table-responsive">
+		 <div class="list-group" ng-hide="offers.length == 0" >
+		 	<a ng-repeat="offer in offers" href="#" class="list-group-item list-group-item-action">{{offer.id}} - {{offer.description}} ( {{offer.discount}} discount)</a>
+		 </div>
+	 </div>
 </div>

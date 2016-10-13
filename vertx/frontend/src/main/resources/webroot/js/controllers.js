@@ -48,10 +48,11 @@ function UsersCtrl($scope, $http, Users) {
     $scope.orderBy = 'name';
 }
 
-function HomeCtrl($scope, $http, Products, Users) {
+function HomeCtrl($scope, $http, Products, Users, Offers) {
 
     $scope.refreshProds = function() {
-        $scope.products = Products.query()
+        $scope.products = Products.query();
+        $scope.offers = Offers.query();
     }
 
      // Define a clearMessages function that resets the values of the error and
@@ -117,3 +118,7 @@ function HomeCtrl($scope, $http, Products, Users) {
         $scope.refreshProds();
 
 }
+
+
+
+
