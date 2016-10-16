@@ -69,6 +69,6 @@ func main() {
 	router.HandleFunc("/api/users/{id}", CreatePersonEndpoint).Methods("POST")
 	router.HandleFunc("/api/users/{id}", DeletePersonEndpoint).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":" + *port, handlers.CORS(handlers.AllowedMethods([]string{"DELETE", "POST", "GET", "HEAD" }))(router)))
+	log.Fatal(http.ListenAndServe(":" + *port, handlers.CORS(handlers.AllowedMethods([]string{"DELETE", "POST", "GET", "HEAD", "OPTIONS" }))(router)))
 
 }
