@@ -1,20 +1,20 @@
 package it.redhat.osd.rest;
 
-import java.util.UUID;
 import java.util.logging.Logger;
 
 public class EchoService {
 	
 	private static Logger log = Logger.getLogger(EchoService.class.getName());
     
-	public String createUUIDMessage() {
+	public EchoResponse createUUIDMessage() {
     	log.info("Service called without payload, returning random UUID... ");
-   		return UUID.randomUUID().toString();
+   		return new EchoResponse();
     }
 	
-	public String createEchoMessage(String payload) {
+	public EchoResponse createEchoMessage(String payload) {
+        EchoResponse response = new EchoResponse().setPayload(payload);
     	log.info("Service called with payload: "+payload);
-  		return payload ;
+  		return response;
     }
 
 }
