@@ -17,15 +17,11 @@ if the second command doesn't work you can also try `tar -xvf images/rootfs.tar 
 
 ## Usage (from source)
 
-You must be ROOT to use doccher.
-
 ```
 go run doccher.go run bash
 ```
 
 ## Usage (from binary)
-
-You must be ROOT to use doccher.
 
 ```
 go build doccher.go
@@ -37,4 +33,5 @@ go build doccher.go
 Original code by Julian Friedman [1] and Liz Rice [2]
 
 [1] https://www.infoq.com/articles/build-a-container-golang
+
 [2] https://youtu.be/HPuvDm8IC-4?list=PLDWZ5uzn69eyh791ZTkEA9OaTxVpGY8_g
