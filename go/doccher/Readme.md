@@ -24,3 +24,10 @@ go run doccher.go run bash
 go build doccher.go
 ./doccher run bash
 ```
+
+## Credits
+
+Original code by Julian Friedman [1] and Liz Rice [2]
+
+[1] https://www.infoq.com/articles/build-a-container-golang
+[2] https://youtu.be/HPuvDm8IC-4?list=PLDWZ5uzn69eyh791ZTkEA9OaTxVpGY8_g
