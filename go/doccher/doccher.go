@@ -43,10 +43,10 @@ func child() {
 	} else {
 		fmt.Println(wd)
 	}
-	//if err := pivotRoot(wd); err != nil {
-	//	fmt.Println("ERROR", err)
-	//	os.Exit(1)
-        //}
+	if err := chRoot("/path/to/busybox"); err != nil {
+		fmt.Println("ERROR", err)
+		os.Exit(1)
+	}
 	cmd := exec.Command(os.Args[2], os.Args[3:]...)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
@@ -58,6 +58,22 @@ func child() {
 	}
 }
 
+func chRoot(root string) error {
+
+	err:= syscall.Mount(filepath.Join(root, "/proc"), filepath.Join(root, "/proc"), "proc", syscall.MS_NOEXEC | syscall.MS_NOSUID | syscall.MS_NODEV, "")
+	if err != nil {
+		return fmt.Errorf("mount proc error %v", err)
+	}
+
+	err = syscall.Chroot(root)
+	if err != nil {
+		return fmt.Errorf("chroot error %v", err)
+	}
+
+	err = syscall.Chdir("/");
+
+	return err
+}
 
 func pivotRoot(root string) error {
 	// we need this to satisfy restriction:
@@ -67,6 +83,7 @@ func pivotRoot(root string) error {
 	}
 	// create rootfs/.pivot_root as path for old_root
 	pivotDir := filepath.Join(root, ".pivot_root")
+	os.Remove(pivotDir)
 	if err := os.Mkdir(pivotDir, 0777); err != nil {
 		return err
 	}
