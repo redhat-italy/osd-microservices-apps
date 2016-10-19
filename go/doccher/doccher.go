@@ -7,13 +7,19 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"os/exec"
 	"syscall"
 )
 
+var chroot string;
+
 func main() {
+
+	chroot = flag.String("chroot", "/home/doccher", "choot directory")
+	flag.Parse()
 
 	if len(os.Args) < 3 {
 		fmt.Println("usage: doccher run command")
@@ -48,7 +54,7 @@ func child() {
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	must(syscall.Chroot("/home/doccher"))
+	must(syscall.Chroot(chroot))
 	must(syscall.Chdir("/"))
 	must(syscall.Mount("proc", "proc", "proc", 0, ""))
 	must(cmd.Run())
