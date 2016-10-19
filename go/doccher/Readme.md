@@ -9,16 +9,20 @@ https://github.com/jpetazzo/docker-busybox/raw/master/rootfs.tar
 
 ```
 mkdir /home/doccher
-tar xvf images/rootfs.tar /home/docker
+tar xvf images/rootfs.tar -C /home/docker
 ```
 
 ## Usage (from source)
+
+You must be ROOT to use doccher.
 
 ```
 go run doccher.go run bash
 ```
 
 ## Usage (from binary)
+
+You must be ROOT to use doccher.
 
 ```
 go build doccher.go
