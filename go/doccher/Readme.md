@@ -7,10 +7,13 @@ This docker miniclone works only in Linux.
 You have to prepare a chroot ready directory before running it. There is a prebuilt busy box image in the images directory.
 https://github.com/jpetazzo/docker-busybox/raw/master/rootfs.tar
 
+**All the following commands need to be executed as a privileged user (i.e. `root` or using `sudo`)**
+
 ```
 mkdir /home/doccher
 tar xvf images/rootfs.tar -C /home/doccher
 ```
+if the second command doesn't work you can also try `tar -xvf images/rootfs.tar -C /home/docker`. 
 
 ## Usage (from source)
 
