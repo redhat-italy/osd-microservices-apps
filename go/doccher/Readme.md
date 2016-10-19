@@ -9,7 +9,7 @@ https://github.com/jpetazzo/docker-busybox/raw/master/rootfs.tar
 
 ```
 mkdir /home/doccher
-tar xvf images/rootfs.tar /home/docker
+tar xvf images/rootfs.tar /home/doccher
 ```
 
 ## Usage (from source)
