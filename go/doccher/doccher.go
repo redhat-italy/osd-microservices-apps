@@ -1,3 +1,7 @@
+// original code by Julian Friedman [1] and Liz Rice [2]
+// [1] https://www.infoq.com/articles/build-a-container-golang
+// [2] https://youtu.be/HPuvDm8IC-4?list=PLDWZ5uzn69eyh791ZTkEA9OaTxVpGY8_g
+
 package main
 
 import (
@@ -38,18 +42,14 @@ func parent() {
 func child() {
 
 	fmt.Printf("running %v as pid %d\n", os.Args[2:], os.Getpid())
-
 	cmd := exec.Command(os.Args[2], os.Args[3:]...)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-
 	must(syscall.Chroot("/home/doccher"))
 	must(syscall.Chdir("/"))
 	must(syscall.Mount("proc", "proc", "proc", 0, ""))
-
 	must(cmd.Run())
-
 }
 
 
