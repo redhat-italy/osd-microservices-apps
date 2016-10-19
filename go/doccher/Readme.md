@@ -11,7 +11,7 @@ https://github.com/jpetazzo/docker-busybox/raw/master/rootfs.tar
 
 ```
 mkdir /home/doccher
-tar xvf images/rootfs.tar -C /home/doccher
+tar xvf images/rootfs.tar /home/doccher
 ```
 if the second command doesn't work you can also try `tar -xvf images/rootfs.tar -C /home/docker`. 
 
