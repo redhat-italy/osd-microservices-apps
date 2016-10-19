@@ -17,6 +17,7 @@
 package it.redhat.osd;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 /**
@@ -28,8 +29,8 @@ import javax.jws.WebService;
 public interface ShippingService {
 
   
-    @WebMethod
-    public String quoteShipping(String country);
+    @WebMethod(operationName = "quoteShipping")
+    public String quoteShipping(@WebParam(name = "country") String country,@WebParam(name = "address")  String address);
 
   
 }
