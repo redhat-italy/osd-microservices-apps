@@ -17,14 +17,14 @@
 -->
 <html lang="en" ng-app="kitchensink">
 <head>
-    <title>kitchensink</title>
+    <title>Red Hat Open Source Day 2016</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Disable phone number detection on iOS.  -->
     <meta name="format-detection" content="telephone=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css" />
-    <!-- <link rel="stylesheet" href="css/screen.css" type="text/css" /> -->
+    <link rel="stylesheet" href="css/screen.css" type="text/css" />
 
     <!-- Load jQuery -->
     <script src="js/libs/jquery-2.0.3.js"></script>
@@ -59,15 +59,62 @@
 <body>
     <div id="container" >
         <div class="row">
-            <div class="col-xs-12">
-                <h1>Welcome to Open Source Day Microservice Sample App!</h1>
+            <div class="col-xs-12 header">
+                <div class="col-xs-6">
+                <img src="./gfx/redhat.png">
+                    <h1>Welcome to Open Source Day!</h1>
 
-                <p>You have successfully deployed a Microservices Application on Openshift</p>
+                    <p>You have successfully deployed a Microservices Application on Openshift</p>
+                </div>
+                <div class="col-xs-6 sbases">
+                    <img src="./gfx/open-source-day-logo.png">
+                </div>
             </div>
             <div class="col-xs-12">
                 <div id="content" ng-view>
                     <!-- This div will be templated by AngularJS -->
                     [Template content will be inserted here]
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-5">
+                    <hr>
+                </div>
+                <div class="col-xs-2">
+                    <div class="col-xs-12">
+                        <h3 class="centeral">Powered By</h3>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <hr>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <img class="oselogo" src="./gfx/OpenShiftContainerPlatform.jpg">
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-4">
+                    <img class="logo" src="./gfx/jboss-logo.png">
+                </div>
+                <div class="col-xs-4">
+                    <img class="logo" src="./gfx/logos_fuse.png">
+                </div>
+                <div class="col-xs-4">
+                    <img class="logo" src="./gfx/brms.jpg">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-xs-3">
+                    <img class="logosmall" src="./gfx/gopher_head.png">
+                </div>
+                <div class="col-xs-3">
+                    <img class="logosmall" src="./gfx/logo-sm.png">
+                </div>
+                <div class="col-xs-3">
+                    <img class="logosmall" src="./gfx/swarm_logo_final.png">
+                </div>
+                <div class="col-xs-3">
+                    <img class="logosmall" src="./gfx/springboot.png">
                 </div>
             </div>
     </div>

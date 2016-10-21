@@ -15,30 +15,57 @@
  * limitations under the License.
  */
 /* Core styles for the page */
+
+@font-face {
+    font-family: "Overpass-Bold"
+    src: url(../gfx/Overpass-Bold.woff)
+}
+
+@font-face {
+    font-family: "Overpass-Light"
+    src: url(../gfx/Overpass-Light.woff)
+}
+
+@font-face {
+    font-family: "Overpass"
+    src: url(../gfx/Overpass-Regular.woff)
+}
+
+.header {
+    background-color: #b30000;
+    font-family: "Overpass-Bold", "Lucida Grande", sans-serif;
+    color: #f2f2f2;
+    padding-left: 100px;
+    padding-top: 100px;
+    background-image: url(../gfx/header-story-tech-product_line_jboss-2000x1357.jpg);
+    background-position: 20% 50%;
+    height: 300px;
+    width: 100%;
+    z-index: -1;
+}
+
+.logo {
+   background-image: url(../gfx/redhat.svg);
+   height: 150px;
+   width: 150px;
+}
 body {
   margin: 0;
   padding: 0;
-  background-color: #F1F1F1;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  background-color: #FFFFF;
+  font-family: "Overpass", "Lucida Grande", sans-serif;
   color:#363636;
 }
 
 #container {
-  margin: 0 auto;
-  padding: 30px 20px 10px;
-  border: 5px solid #8c8f91;
-  border-top-color: #000000;
-  border-bottom-width: 25px;
-  background: #FFFFFF url(../gfx/headerbkg.png) repeat-x;
-  box-shadow: 3px 3px 15px #d5d5d5;
+  margin: 1em auto;
 }
 
-#aside {
+.aside {
   font-size: 0.9em;
   float: left;
   margin: 20px 0;
   border: 1px solid #D5D5D5;
-  background: #F1F1F1 url(../gfx/asidebkg.png) repeat-x;
   padding: 20px;
 }
 
@@ -49,17 +76,11 @@ body {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-#footer {
-  clear: both;
-  text-align: center;
-  color: #666666;
-  font-size: 0.85em;
-}
+
 code {
   font-size: 1.1em;
 }
 a {
-  color: #4a5d75;
   text-decoration: none;
 }
 a:hover {
@@ -67,11 +88,10 @@ a:hover {
   text-decoration: underline;
 }
 h1 {
-  color:#243446;
-  font-size: 2.25em;
+  font-family:  font-family: "Overpass-Bold", "Lucida Grande", sans-serif;
 }
 h2 {
-  font-size: 1em;
+  font-size: 2em;
 }
 h3 {
   color:#243446;
@@ -93,8 +113,13 @@ ul.success {
     color: green;
 }
 form {
-  padding: 1em;
+  padding: 3em;
   border: 1px solid #D5D5D5;
+}
+
+#offers {
+    padding: 3em;
+    border: 1px solid #D5D5D5;
 }
 label {
   font-weight: bold;
@@ -103,6 +128,79 @@ label {
 .register {
   float: left;
   margin-left: 85px;
+}
+
+.sbases {
+    margin-top: 4.5em;
+}
+
+.sbasespoc {
+    margin-top: 2em;
+}
+
+.cooltitle {
+    background-position: bottom right;
+    background-image: url("../gfx/bkgd-cloud-crangle-130x130.png");
+    background-color: #252527;
+    background-repeat: no-repeat;
+    color: #f2f2f2;
+    margin 3em;
+}
+
+.custcolor {
+    color: #f2f2f2;
+}
+
+.coolquote {
+    background-position: bottom right;
+    background-image: url("../gfx/bkgd-corporate-crangle-130x130.png");
+    background-color:  #e6e6e6;
+    background-repeat: no-repeat;
+    margin 3em;
+}
+
+.offerslist {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.offerslink {
+     color: #f2f2f2;
+}
+
+.centeral {
+    text-align: center;
+    vertical-align: middle;
+}
+
+hr {
+    border-width: 3px;
+}
+
+.logo {
+    margin-top: 1em;
+    width: 250px;
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logosmall {
+    margin-top: 3em;
+    width: 150px;
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.oselogo {
+    height: 100px;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .fadein,

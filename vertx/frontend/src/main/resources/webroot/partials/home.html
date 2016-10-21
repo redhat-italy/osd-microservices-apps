@@ -16,9 +16,9 @@
     limitations under the License.
 -->
 <!-- This is a partial, and is templated by AngularJS -->
-<div class="col-xs-6" xmlns="http://www.w3.org/1999/html">
+<div class="col-xs-6 sbasespoc" xmlns="http://www.w3.org/1999/html">
     <!-- Standard HTML form, with the submit function bound to the register() function defined in the the controller -->
-    <form name="regForm" class="form-horizontal" ng-submit="register()">
+    <form name="regForm" class="form-horizontal coolquote" ng-submit="register()">
         <h2>Quote your order!</h2>
         <fieldset>
             <legend>Get a quote:</legend>
@@ -92,18 +92,21 @@
         </fieldset>
     </form>
     <div>
-        <!-- The table has a button to manually refresh the values, in case, for example, someone else adds a member -->
+        <!-- The table has a button to manually refresh the values, in case, for example, someone else adds a member
         <input type="button" ng-click="refresh()" name="refresh"
-            id="refresh" value="Refresh" class="btn btn-default" />
+            id="refresh" value="Refresh" class="btn btn-default" />-->
     </div>
+</div>
+<div class="col-xs-3 cooltitle sbasespoc" id="offers">
+    <div class="col-xs-12">
+        <h2>Special Offers:</h2>
+    </div>
+    <em ng-show="offers.length == 0">No offers .</em>
+    <div class="col-xs-12">
+        <div ng-repeat="offer in offers" class="col-xs-12 offerslist" ng-hide="offers.length == 0" >
+            <a class="custcolor" href="#">{{offer.id}} - {{offer.description}} ( {{offer.discount}}% discount)</a>
+        </div>
+    </div>
+</div>
 
-</div>
-<div class="col-xs-3">
-    <h1>Special Offers:</h1>
-<em ng-show="offers.length == 0">No offers .</em>
-	 <div class="table-responsive">
-		 <div class="list-group" ng-hide="offers.length == 0" >
-		 	<a ng-repeat="offer in offers" href="#" class="list-group-item list-group-item-action">{{offer.id}} - {{offer.description}} ( {{offer.discount}} discount)</a>
-		 </div>
-	 </div>
-</div>
+

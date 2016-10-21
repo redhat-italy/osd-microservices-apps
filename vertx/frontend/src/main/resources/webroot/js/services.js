@@ -27,6 +27,6 @@ angular.module('productService', ['ngResource']).
 
 angular.module('offerService', ['ngResource']).
 factory('Offers', function($resource){
-return $resource('http://localhost:8180/ha/api/offers/:Id', {});
+return $resource('http://localhost:8180/api/offers/:Id', {});
 });
 

@@ -22,6 +22,10 @@ angular.module('kitchensink', [ 'ngRoute', 'usersService', 'productService','off
          * Use a HTTP interceptor to add a nonce to every request to prevent MSIE from caching responses.
          */
         $httpProvider.interceptors.push('ajaxNonceInterceptor');
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common["X-Requested-With"];
+        $httpProvider.defaults.headers.common["Accept"] = "application/json";
+        $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 
         $routeProvider.
         // if URL fragment is /home, then load the home partial, with the MembersCtrl controller
