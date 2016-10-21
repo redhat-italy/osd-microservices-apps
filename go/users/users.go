@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"github.com/gorilla/mux"
-	"github.com/gorilla/handlers"
+	"github.com/rs/cors"
 	"flag"
 )
 
@@ -39,7 +39,7 @@ func CreatePersonEndpoint(w http.ResponseWriter, req *http.Request) {
 	_ = json.NewDecoder(req.Body).Decode(&user)
 	user.ID = params["id"]
 	users = append(users, user)
-	json.NewEncoder(w).Encode(users)
+	json.NewEncoder(w).Encode(user)
 }
 
 func DeletePersonEndpoint(w http.ResponseWriter, req *http.Request) {
@@ -65,10 +65,11 @@ func main() {
 	users = append(users, User{ID: "6", Firstname: "Luca", Lastname: "Bigotta", Mail: "lbigotta@redhat.com"})
 
 	router.HandleFunc("/api/users", GetPeopleEndpoint).Methods("GET")
+	router.HandleFunc("/api/users", CreatePersonEndpoint).Methods("POST")
 	router.HandleFunc("/api/users/{id}", GetPersonEndpoint).Methods("GET")
-	router.HandleFunc("/api/users/{id}", CreatePersonEndpoint).Methods("POST")
 	router.HandleFunc("/api/users/{id}", DeletePersonEndpoint).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":" + *port, handlers.CORS(handlers.AllowedMethods([]string{"DELETE", "POST", "GET", "HEAD", "OPTIONS" }))(router)))
+	handler := cors.Default().Handler(router)
+	log.Fatal(http.ListenAndServe(":" + *port, handler))
 
 }
