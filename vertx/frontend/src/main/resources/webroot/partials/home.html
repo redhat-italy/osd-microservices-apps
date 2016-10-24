@@ -16,6 +16,7 @@
     limitations under the License.
 -->
 <!-- This is a partial, and is templated by AngularJS -->
+<div class="col-xs-12">
 <div class="col-xs-6 sbasespoc" xmlns="http://www.w3.org/1999/html">
     <!-- Standard HTML form, with the submit function bound to the register() function defined in the the controller -->
     <form name="regForm" class="form-horizontal coolquote" ng-submit="register()">
@@ -69,6 +70,14 @@
                     <span class="error help-block" ng-show="errors.quantity">{{errors.quantity}}</span>
                 </div>
             </div>
+            <div ng-class="{'form-group' : true }">
+                <label for="offer" class="col-sm-2 control-label">Offer:</label>
+                <div class="col-sm-10">
+                    <span name="offer" id="offer" ng-model="newMember.offer" class="form-control">
+                        {{selectedOffer.description}}
+                    </span>
+                </div>
+            </div>
 
             
             <!-- We output a list of success messages (appropriately styled!) for the form. -->
@@ -91,11 +100,6 @@
             </div>
         </fieldset>
     </form>
-    <div>
-        <!-- The table has a button to manually refresh the values, in case, for example, someone else adds a member
-        <input type="button" ng-click="refresh()" name="refresh"
-            id="refresh" value="Refresh" class="btn btn-default" />-->
-    </div>
 </div>
 <div class="col-xs-3 cooltitle sbasespoc" id="offers">
     <div class="col-xs-12">
@@ -104,9 +108,9 @@
     <em ng-show="offers.length == 0">No offers .</em>
     <div class="col-xs-12">
         <div ng-repeat="offer in offers" class="col-xs-12 offerslist" ng-hide="offers.length == 0" >
-            <a class="custcolor" href="#">{{offer.id}} - {{offer.description}} ( {{offer.discount}}% discount)</a>
+            <a class="custcolor" ng-click="assignOffer(offer)" >{{offer.id}} - {{offer.description}} ( {{offer.discount}}% discount)</a>
         </div>
     </div>
 </div>
-
+</div>
 

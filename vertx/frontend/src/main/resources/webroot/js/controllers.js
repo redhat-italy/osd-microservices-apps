@@ -110,6 +110,14 @@ function HomeCtrl($scope, $http, Products, Users, Offers) {
 
         };
 
+        $scope.assignOffer = function(offer) {
+
+            $scope.selectedOffer = offer;
+        }
+
+        //Initialize scope variables
+        $scope.selectedOffer = "";
+
         // Initialize newMember here to prevent Angular from sending a request
         // without a proper Content-Type.
         $scope.reset();

@@ -42,6 +42,9 @@
     height: 300px;
     width: 100%;
     z-index: -1;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left bottom;
 }
 
 .logo {
@@ -72,6 +75,7 @@ body {
 #aside ul {
   padding-left: 30px;
 }
+
 .dualbrand {
   margin-bottom: 20px;
   padding: 0 10px;
@@ -80,9 +84,11 @@ body {
 code {
   font-size: 1.1em;
 }
+
 a {
   text-decoration: none;
 }
+
 a:hover {
   color: #369;
   text-decoration: underline;
@@ -222,3 +228,5 @@ hr {
     opacity: 1;
     display: block !important;
 }
+
+
