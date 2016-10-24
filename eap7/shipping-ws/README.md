@@ -1,6 +1,5 @@
 helloworld-ws: Hello World JAX-WS Web Service
 ==================================================
-Author: Lee Newson  
 Level: Beginner  
 Technologies: JAX-WS  
 Summary: The `helloworld-ws` quickstart demonstrates a simple Hello World application, bundled and deployed as a WAR, that uses *JAX-WS* to say Hello.  
