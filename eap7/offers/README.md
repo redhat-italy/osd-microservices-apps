@@ -1,6 +1,5 @@
 Offers CRUD Service: Microservice Using JAX-RS (Java API for RESTful Web Services)
 ==========================================================================
-Author: Giuseppe Bonocore
 Level: Basic    
 Technologies: CDI, JAX-RS    
 Summary: The `Offers` microservice demonstrates a simple CRUD application, bundled and deployed as a WAR, that uses *JAX-RS* to CRUD offers objects.    

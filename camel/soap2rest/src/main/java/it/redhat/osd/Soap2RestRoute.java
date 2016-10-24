@@ -44,7 +44,7 @@ public class Soap2RestRoute extends RouteBuilder {
     private Endpoint logEndpoint;
     
     @Inject
-    @Uri("cxfrs://http://localhost:9090/?resourceClasses=it.redhat.osd.ShippingEndpoint")
+    @Uri("cxfrs://http://localhost:8080/?resourceClasses=it.redhat.osd.ShippingEndpoint")
     private Endpoint restEndpoint;
 
     @Inject
