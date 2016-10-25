@@ -48,7 +48,7 @@ public class Soap2RestRoute extends RouteBuilder {
     private Endpoint restEndpoint;
 
     @Inject
-    @Uri("http://localhost:8180/ShippingService?bridgeEndpoint=true")
+    @Uri("http://${env:SHIPPING_SOAP_ENDPOINT}/ShippingService?bridgeEndpoint=true")
     private Endpoint soapWsEndpoint;
     
     
