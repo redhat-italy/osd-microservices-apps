@@ -61,7 +61,7 @@ JSON object are formatted using following template:
 {"id":"9","description":"My Fabulous Promo ","discount":30}
 ```
 
-If object is not found, HTTP 404 will be returned.
+If object is not found, HTTP 204 will be returned.
 
         
 ## Connecting from a client

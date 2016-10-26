@@ -1,0 +1,11 @@
+package it.redhat.osd.brms.rules;
+
+import it.redhat.osd.model.Order;
+
+rule silver when
+    o : Order( quantity > 2 )
+then
+    System.out.println("\n===> Applying 5 points of discount.");
+    modify( o ) { discount += 5 }
+    retract(o);
+end

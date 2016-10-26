@@ -23,14 +23,14 @@ public class DecisionRestController {
     }
 
     @CrossOrigin
-    @RequestMapping(value="/brms/ds/info", method = RequestMethod.GET)
+    @RequestMapping(value="/api/brms/ds/info", method = RequestMethod.GET)
     public @ResponseBody
     Info info( ) {
         return new Info().setCounter(counter.incrementAndGet());
     }
 
     @CrossOrigin
-    @RequestMapping(value="/brms/ds/order", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value="/api/brms/ds/order", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody Order order(@RequestBody Order order) {
         Order calculatedOrder = decisionService.getResult(order);
         return calculatedOrder;
