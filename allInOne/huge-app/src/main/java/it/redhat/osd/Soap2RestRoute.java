@@ -33,19 +33,17 @@ public class Soap2RestRoute extends RouteBuilder {
     @Uri("log:output")
     private Endpoint logEndpoint;
     
-    @Inject
-    @Uri("cxfrs://http://localhost:8778/?resourceClasses=it.redhat.osd.ShippingEndpoint")
-    private Endpoint restEndpoint;
+   
 
     @Inject
-    @Uri("http://${env:SHIPPING_SOAP_ENDPOINT}/ShippingService?bridgeEndpoint=true")
+    @Uri("http://localhost:8080/ShippingService?bridgeEndpoint=true")
     private Endpoint soapWsEndpoint;
     
     
     
     @Override
     public void configure() throws Exception {
-    	from(restEndpoint)
+    	from("direct:input")
     		.convertBodyTo(String.class)
     		    .to("freemarker:it/redhat/osd/soapTemplate.ftl")
     		    	.removeHeaders("*")
