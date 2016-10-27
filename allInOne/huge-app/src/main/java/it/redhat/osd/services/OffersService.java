@@ -1,4 +1,4 @@
-package it.redhat.osd;
+package it.redhat.osd.services;
 
 import java.util.logging.Logger;
 

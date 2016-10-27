@@ -1,4 +1,4 @@
-package it.redhat.osd;
+package it.redhat.osd.endpoints;
 
 import java.util.logging.Logger;
 
@@ -13,6 +13,8 @@ import javax.ws.rs.core.MediaType;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.ProxyBuilder;
 import org.apache.camel.cdi.ContextName;
+
+import it.redhat.osd.camel.CamelDelegate;
 
 
 @Path("/")

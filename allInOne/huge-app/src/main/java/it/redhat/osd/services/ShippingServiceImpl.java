@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package it.redhat.osd;
+package it.redhat.osd.services;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -27,7 +27,7 @@ import javax.jws.WebService;
  * 
  * @author gbonocor@redhat.com
  */
-@WebService(serviceName = "ShippingService", portName = "Shipping", name = "Shipping", endpointInterface = "it.redhat.osd.ShippingService")
+@WebService(serviceName = "ShippingService", portName = "Shipping", name = "Shipping", endpointInterface = "it.redhat.osd.services.ShippingService")
 public class ShippingServiceImpl implements ShippingService {
 
 	private static Logger log = Logger.getLogger(ShippingServiceImpl.class.getName());

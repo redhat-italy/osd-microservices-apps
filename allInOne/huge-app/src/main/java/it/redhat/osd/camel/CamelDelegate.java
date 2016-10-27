@@ -1,4 +1,4 @@
-package it.redhat.osd;
+package it.redhat.osd.camel;
 
 public interface CamelDelegate {
 
