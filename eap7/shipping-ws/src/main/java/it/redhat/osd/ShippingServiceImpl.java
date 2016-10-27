@@ -55,14 +55,14 @@ public class ShippingServiceImpl implements ShippingService {
 		if(countryPrices == null)
 		{
 			countryPrices = new Hashtable<String,String>();
-			countryPrices.put("IT","15 EUR");
-			countryPrices.put("UK","25 EUR");
-			countryPrices.put("DE","20 EUR");
-			countryPrices.put("FR","30 EUR");
-			countryPrices.put("ES","15 EUR");
-			countryPrices.put("US","40 EUR");
-			countryPrices.put("CH","35 EUR");
-			countryPrices.put("OTHER","50 EUR");
+			countryPrices.put("IT","15");
+			countryPrices.put("UK","25");
+			countryPrices.put("DE","20");
+			countryPrices.put("FR","30");
+			countryPrices.put("ES","15");
+			countryPrices.put("US","40");
+			countryPrices.put("CH","35");
+			countryPrices.put("OTHER","50");
 			
 		}
 	}
