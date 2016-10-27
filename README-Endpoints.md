@@ -1,10 +1,12 @@
 # Osd-microservices-apps
+
 Open Source Day Microservices apps
 
 Here the list of all the exposed endpoints:
 
-## Users:
 ======================================
+
+## Users:
 
 ### Endpoints
 
@@ -27,11 +29,9 @@ JSON objects are formatted using following template:
 
 If object is not found, HTTP 404 will be returned.
 
-
-
+======================================
 
 ## Offers:
-======================================
 
 ### Endpoints
 
@@ -55,11 +55,9 @@ JSON objects are formatted using following template:
 
 If object is not found, HTTP 404 will be returned.
 
-
-
+======================================
 
 ## Products:
-======================================
 
 ### Endpoints
 
@@ -83,11 +81,9 @@ JSON objects are formatted using following template:
 
 If object is not found, HTTP 404 will be returned.
 
-
-
+======================================
 
 ## Orders:
-======================================
 
 ### Endpoints
 
@@ -98,7 +94,6 @@ localhost:8080/brms/ds/order
 only POST is available. You must post an offer object, to have another object with the correct discount, according to the rule
 
 
-
 ### JSON DataModel
 
 JSON objects are formatted using following template:
@@ -107,10 +102,10 @@ JSON objects are formatted using following template:
 {"customer_id":1,"product_id":"pippo","quantity":3,"discount":3}
 ```
 
-
-
-## Soap2Rest:
 ======================================
+
+## Soap2Rest (Shipping):
+
 
 ### Endpoints
 
