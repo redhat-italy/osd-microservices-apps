@@ -1,0 +1,65 @@
+<div class="col-xs-6 sbasespoc" xmlns="http://www.w3.org/1999/html">
+    <!-- Standard HTML form, with the submit function bound to the register() function defined in the the controller -->
+    <form name="regForm" class="form-horizontal coolquote" ng-submit="register()">
+        <h2>Shpping Details:</h2>
+        <fieldset>
+            <!-- Each input is bound to a property on the prototype newMember object -->
+            <div ng-class="{'form-group' : true, 'has-error' : regForm.firstname.$error.required, 'has-success' : !regForm.firstname.$error.required}">
+                <label for="firstname" class="col-sm-2 control-label">First Name:</label>
+                <div class="col-sm-6">
+                    <input type="text" name="firstname" id="firstname"  ng-model="shippingInfo.firstname" class="form-control" placeholder="Your Name" required autofocus/>
+                    <span class="error help-block" ng-show="regForm.firstname.$error.required">required</span>
+                    <span class="error help-block" ng-show="errors.firstname">{{errors.name}}</span>
+                </div>
+            </div>
+            <div ng-class="{'form-group' : true, 'has-error' : regForm.lastname.$error.required, 'has-success' : !regForm.lastname.$error.required}">
+                <label for="lastname" class="col-sm-2 control-label">Last Name:</label>
+                <div class="col-sm-6">
+                    <input type="text" name="lastname" id="lastname"  ng-model="shippingInfo.lastname" class="form-control" placeholder="Your Last Name" required autofocus/>
+                    <span class="error help-block" ng-show="regForm.lastname.$error.required">required</span>
+                    <span class="error help-block" ng-show="errors.lastname">{{errors.name}}</span>
+                </div>
+            </div>
+            <div ng-class="{'form-group' : true, 'has-error' : regForm.address.$error.required, 'has-success' : !regForm.address.$error.required}">
+                <label for="address" class="col-sm-2 control-label">Address:</label>
+                <div class="col-sm-6">
+                    <input type="text" name="address" id="address"  ng-model="shippingInfo.address_line1" class="form-control" placeholder="Your Address" required autofocus/>
+                    <span class="error help-block" ng-show="regForm.address.$error.required">required</span>
+                    <span class="error help-block" ng-show="errors.address">{{errors.name}}</span>
+                </div>
+            </div>
+            <div ng-class="{'form-group' : true, 'has-error' : regForm.zipcode.$error.required, 'has-success' : !regForm.zipcode.$error.required}">
+                <label for="zipcode" class="col-sm-2 control-label">Zip Code:</label>
+                <div class="col-sm-6">
+                    <input type="text" name="zipcode" id="zipcode"  ng-model="shippingInfo.zipcode" class="form-control" placeholder="Your Zip Code" required autofocus/>
+                    <span class="error help-block" ng-show="regForm.zipcode.$error.required">required</span>
+                    <span class="error help-block" ng-show="errors.zipcode">{{errors.name}}</span>
+                </div>
+            </div>
+            <!-- We output a list of success messages (appropriately styled!) for the form. -->
+            <div ng-hide="!successMessages" ng-repeat="message in successMessages" class="alert alert-success fadein fadeout" >
+                {{message}}
+            </div>
+
+
+            <!-- Output the list of error messages if any. -->
+            <div ng-hide="!errorMessages" ng-repeat="message in errorMessages" class="alert alert-danger alert-error">
+                {{message}}
+            </div>
+
+            <!-- There are two buttons, the default submit action (which is bound for the whole form), and a reset button, that clears the form. -->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" ng-disabled="regForm.$invalid" id="register" value="Check" class="btn btn-primary" />
+                    <input type="button" ng-click="reset()" name="cancel" id="cancel" value="Cancel" class="btn btn-default" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="col-xs-6 cooltitle sbasespoc" xmlns="http://www.w3.org/1999/html">
+    <h2>Review Your Order</h2>
+    <h3 class="custcolor">Product: {{shippingInfo.product}}</h3>
+    <h3 class="custcolor">Price: {{shippingInfo.price}}</h3>
+    <h3 class="custcolor">Shipping Price: {{shippingInfo.shippingPrice}}</h3>
+</div>
