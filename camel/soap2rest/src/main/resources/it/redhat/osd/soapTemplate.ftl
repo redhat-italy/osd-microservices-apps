@@ -1,4 +1,4 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:osd="http://osd.redhat.it/">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:osd="http://services.osd.redhat.it/">
    <soapenv:Header/>
    <soapenv:Body>
       <osd:quoteShipping>
