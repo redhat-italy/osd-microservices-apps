@@ -48,7 +48,8 @@ public class Soap2RestRoute extends RouteBuilder {
     		    .to("freemarker:it/redhat/osd/soapTemplate.ftl")
     		    	.removeHeaders("*")
 	    		       .to(soapWsEndpoint)
-	    		       		.setBody(xpath("//return",String.class))	    		       				
+	    		       		.setBody(xpath("//return",String.class))
+	    		       			.marshal().json()
 	    		       					.to(logEndpoint);
     }	
 
