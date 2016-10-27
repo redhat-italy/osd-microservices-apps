@@ -1,17 +1,5 @@
-Offers CRUD Service: Microservice Using JAX-RS (Java API for RESTful Web Services)
+AllInONe Huge App: A demo legacy app, providing all the other microservices in a  monolithic approach
 ==========================================================================
-Level: Basic    
-Technologies: CDI, JAX-RS    
-Summary: The `Offers` microservice demonstrates a simple CRUD application, bundled and deployed as a WAR, that uses *JAX-RS* to CRUD offers objects.    
-Target Product: JBoss EAP  
-Source: 
-
-## What is it?
-
-=======
-
-The `Offers` quickstart demonstrates the use of *CDI* and *JAX-RS* in Red Hat JBoss Enterprise Application Platform.
-
 
 ## System requirements
 
@@ -40,7 +28,7 @@ All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven
 
         mvn clean install wildfly:deploy
 
-4. This will deploy `target/jboss-helloworld-rs.war` to the running instance of the server.
+4. This will deploy `target/ROOT.war` to the running instance of the server.
 
 
 
@@ -53,28 +41,6 @@ All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven
 
         mvn wildfly:undeploy
         
-## JSON DataModel
+## JSON DataModel and exposed endpoints
 
-JSON object are formatted using following template:
-
-```
-{"id":"9","description":"My Fabulous Promo ","discount":30}
-```
-
-If object is not found, HTTP 204 will be returned.
-
-        
-## Connecting from a client
-
-Open a browser or use curl to connect to the REST service endpoints like follows:
-
-```
-localhost:8080/api/offers
-localhost:8080/api/offer/{id} 
-```
-
-GET, POST and DELETE are implemented.
-
-If passing ID as path param, it must be equals to ID into JSON payload. If not, ID path param will overwrite ID present into JSON payload.
-
-<!-- Build and Deploy the Quickstart to OpenShift - Coming soon! -->
+See "README_Endpoints"
