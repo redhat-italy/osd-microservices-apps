@@ -42,15 +42,4 @@ public class Soap2RestEndpoint {
 	    	 log.info("Getting shipping info for country "+country);   		
 	         return camelDelegate.executeRoute(country);
 	    }
-		
-		@GET
-	    @Path("/shipping/countries")
-	    @Produces(MediaType.APPLICATION_JSON)
-		  public String[] countries() {
-	    	 log.info("Getting countries list ");   
-	    	 String[] toRet = {"IT","UK","DE","FR","ES","US","CH"};
-	         return toRet;
-	    }
-	    
-	   
 }

@@ -1,5 +1,6 @@
 package it.redhat.osd;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import it.redhat.osd.model.Country;
 import it.redhat.osd.model.Offer;
 
 @Path("/api")
@@ -72,5 +74,19 @@ public class OffersEndpoint {
 	    	 
 	    	 offersService.deleteById(id);
 	         return offersService.list();
+	    }
+	    @GET
+	    @Path("/shipping/countries")
+	    @Produces(MediaType.APPLICATION_JSON)
+		  public List<Country> countries() {
+	    	 List<Country> toRet = new ArrayList<Country>(); 
+	    	 toRet.add(new Country("Country", "IT"));
+	    	 toRet.add(new Country("Country", "UK"));
+	    	 toRet.add(new Country("Country", "DE"));
+	    	 toRet.add(new Country("Country", "FR"));
+	    	 toRet.add(new Country("Country", "ES"));
+	    	 toRet.add(new Country("Country", "US"));
+	    	 toRet.add(new Country("Country", "CH"));
+	    	 return toRet;
 	    }
 }

@@ -15,7 +15,7 @@ import javax.ws.rs.container.ContainerRequestContext;
 		
 		
 	    public CorsFilter() {
-	    	log.fine("CorsResponseFilter init");
+	    	log.info("CorsResponseFilter init");
 	    }
 
 	    @Override

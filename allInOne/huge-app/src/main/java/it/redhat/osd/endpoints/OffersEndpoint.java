@@ -1,5 +1,6 @@
 package it.redhat.osd.endpoints;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -14,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import it.redhat.osd.model.Country;
 import it.redhat.osd.model.Offer;
 import it.redhat.osd.services.OffersService;
 
@@ -88,4 +90,20 @@ public class OffersEndpoint {
 			}
 			return (OffersService)request.getSession(true).getAttribute(REPO_SESSION_KEY);
 		}
+	    
+	    @GET
+	    @Path("/shipping/countries")
+	    @Produces(MediaType.APPLICATION_JSON)
+		  public List<Country> countries() {
+	    	 log.info("Getting countries list ");   
+	    	 List<Country> toRet = new ArrayList<Country>(); 
+	    	 toRet.add(new Country("Country", "IT"));
+	    	 toRet.add(new Country("Country", "UK"));
+	    	 toRet.add(new Country("Country", "DE"));
+	    	 toRet.add(new Country("Country", "FR"));
+	    	 toRet.add(new Country("Country", "ES"));
+	    	 toRet.add(new Country("Country", "US"));
+	    	 toRet.add(new Country("Country", "CH"));
+	    	 return toRet;
+	    }
 }
