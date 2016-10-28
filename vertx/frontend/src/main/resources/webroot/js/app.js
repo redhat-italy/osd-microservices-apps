@@ -16,8 +16,8 @@
  */
 // Define any routes for the app
 // Note that this app is a single page app, and each partial is routed to using the URL fragment. For example, to select the 'home' route, the URL is http://localhost:8080/jboss-as-kitchensink-angularjs-bootstrap/#/home
-angular.module('kitchensink', [ 'ngRoute', 'usersService', 'productService','offerService', 'ngAnimate'])
-    .config( [ '$httpProvider','$routeProvider', function($httpProvider, $routeProvider) {
+angular.module('kitchensink', [ 'ngRoute', 'usersService', 'productService','offerService', 'quoteService', 'shippingService', 'countriesService', 'ngAnimate'])
+    .config( [ '$httpProvider','$routeProvider', '$locationProvider' , function($httpProvider, $routeProvider, $locationProvider) {
         /*
          * Use a HTTP interceptor to add a nonce to every request to prevent MSIE from caching responses.
          */
@@ -29,17 +29,24 @@ angular.module('kitchensink', [ 'ngRoute', 'usersService', 'productService','off
 
         $routeProvider.
         // if URL fragment is /home, then load the home partial, with the MembersCtrl controller
-        when('/home', {
+        when('/', {
             templateUrl : 'partials/home.html',
             controller : HomeCtrl
-        // Add a default route
         })
         .when('/lead', {
             templateUrl: 'partials/lead.html',
             controller: UsersCtrl
         })
+        .when('/ship', {
+            templateUrl: 'partials/ship.html',
+            controller: ShipCtrl
+        })
+        .when('/ordered', {
+            templateUrl: 'partials/ordered.html'
+        })
+        // Add a default route
         .otherwise({
-            redirectTo : '/home'
+            redirectTo : '/'
         });
 
 
@@ -58,4 +65,16 @@ angular.module('kitchensink', [ 'ngRoute', 'usersService', 'productService','off
                 return config;
             }
         }
-    });
+    })
+    .service('sharedProperties', function () {
+         var toShipment = {firstname: "", lastname: "", productDesc: "", price: ""};
+
+         return {
+             getProperty: function () {
+                 return toShipment;
+             },
+             setProperty: function(value) {
+                 toShipment = value;
+             }
+         };
+     });

@@ -26,7 +26,22 @@ angular.module('productService', ['ngResource']).
 });
 
 angular.module('offerService', ['ngResource']).
-factory('Offers', function($resource){
-return $resource('http://localhost:8180/api/offers/:Id', {});
+    factory('Offers', function($resource){
+  return $resource('http://localhost:8180/api/offers/:Id', {});
+});
+
+angular.module('quoteService', ['ngResource']).
+    factory('Quote', function($resource){
+  return $resource('http://localhost:8380/api/brms/ds/order', {});
+});
+
+angular.module('shippingService', ['ngResource']).
+    factory('Shipping', function($resource){
+  return $resource('http://localhost:8380/api/shipping/:Country', {});
+});
+
+angular.module('countriesService', ['ngResource']).
+    factory('Countries', function($resource){
+  return $resource('http://localhost:8380/api/shipping/countries', {});
 });
 

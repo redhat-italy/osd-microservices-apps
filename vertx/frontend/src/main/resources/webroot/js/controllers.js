@@ -48,7 +48,7 @@ function UsersCtrl($scope, $http, Users) {
     $scope.orderBy = 'name';
 }
 
-function HomeCtrl($scope, $http, Products, Users, Offers) {
+function HomeCtrl($scope, $http, $location, Products, Users, Offers, Quote, sharedProperties) {
 
     $scope.refreshProds = function() {
         $scope.products = Products.query();
@@ -73,7 +73,8 @@ function HomeCtrl($scope, $http, Products, Users, Offers) {
             // Clear input fields. If $scope.newMember was set to an empty object {},
             // then invalid form values would not be reset.
             // By specifying all properties, input fields with invalid values are also reset.
-            $scope.newMember = {firstname: "", lastname: "", email: "", product: "", quantity: ""};
+            $scope.newMember = {firstname: "", lastname: "", email: "", product: "", quantity: "", offer: ""};
+            $scope.newQuote = {customer_id: "", product_id: "", quantity: "", discount: ""};
 
             // clear messages
             $scope.clearMessages();
@@ -87,26 +88,76 @@ function HomeCtrl($scope, $http, Products, Users, Offers) {
         $scope.register = function() {
             $scope.clearMessages();
 
-            Users.save($scope.newMember, function(data) {
+            $scope.newMember.offer = $scope.selectedOffer.id
 
-                // Update the list of members
-                $scope.refresh();
+            $scope.newQuote.customer_id = $scope.newMember.lastname;
+            $scope.newQuote.product_id = $scope.newMember.product;
+            $scope.newQuote.quantity = $scope.newMember.quantity;
+            $scope.newQuote.discount = $scope.selectedOffer.discount;
+
+
+            Quote.save($scope.newQuote, function(data) {
 
                 // Clear the form
-                $scope.reset();
+                //$scope.reset();
 
+                console.log(data);
 
+                $scope.saveShip = sharedProperties.getProperty();
+
+                $scope.saveShip.firstname = $scope.newMember.firstname;
+                $scope.saveShip.lastname = $scope.newMember.lastname;
+
+                prod = $scope.products.length;
+                console.log("Prodottì: "+prod);
+
+                console.log("searching for products...");
+                for(i = 0; i < prod ; i++) {
+                    if($scope.products[i].id == data.product_id) {
+                        console.log("found"+product);
+                        $scope.saveShip.product = $scope.products[i];
+                        $scope.saveShip.price = ($scope.products[i].price * data.quantity);
+                        $scope.saveShip.price = $scope.saveShip.price - ($scope.saveShip.price * (data.discount / 100));
+                    }
+                }
+                console.log("saved for shipment: "+$scope.saveShip)
+                sharedProperties.setProperty($scope.saveShip);
+
+                Users.save($scope.newMember, function(data) {
+
+                        // Clear the form
+                        $scope.reset();
+
+                        //change view
+                        $location.path("/ship");
+
+                        // mark success on the registration form
+
+                    }, function(result) {
+                        if ((result.status == 409) || (result.status == 400)) {
+                            $scope.errors = result.data;
+                            $scope.errorMessages = [result.data]
+                        } else {
+                            $scope.errorMessages = [ 'Unknown  server error' ];
+                        }
+                })
 
                 // mark success on the registration form
 
-            }, function(result) {
-                if ((result.status == 409) || (result.status == 400)) {
-                    $scope.errors = result.data;
-                    $scope.errorMessages = [result.data]
-                } else {
-                    $scope.errorMessages = [ 'Unknown  server error' ];
-                }
-            });
+                }, function(result) {
+                    if ((result.status == 409) || (result.status == 400)) {
+                        $scope.errors = result.data;
+                        $scope.errorMessages = [result.data]
+                    } else {
+                        $scope.errorMessages = [ 'Unknown  server error' ];
+                    }
+                });
+
+
+
+
+
+
 
         };
 
@@ -127,6 +178,49 @@ function HomeCtrl($scope, $http, Products, Users, Offers) {
 
 }
 
+function ShipCtrl($scope, $http, $location, Users, sharedProperties, Countries, Shipping) {
 
+    $scope.refeshCountries = function() {
+        $scope.countries = Countries.query();
+    }
 
+    $scope.checkShipping = function() {
 
+        var self = this;
+        Shipping.get({Country: self.shippingInfo.country}, function(data) {
+
+            $scope.shippingInfo.shippingPrice = data.string;
+            $scope.orderEnable = true;
+
+        }
+        ,function(result) {
+             if ((result.status == 409) || (result.status == 400)) {
+                 $scope.errors = result.data;
+             } else {
+                 $scope.errorMessages = [ 'Unknown  server error' ];
+             }
+         });
+    }
+
+    $scope.order = function() {
+        $location.path("/ordered")
+    }
+
+    console.log(sharedProperties.getProperty());
+
+    //disable order button
+    $scope.orderEnable = false;
+
+    $scope.preShipping = sharedProperties.getProperty();
+
+    $scope.shippingInfo = {firstname: "", lastname: "", product: "", price: "", address_line1: "", code: "", country: ""};
+    $scope.shippingInfo.firstname = $scope.preShipping.firstname;
+    $scope.shippingInfo.lastname = $scope.preShipping.lastname;
+    $scope.shippingInfo.price = $scope.preShipping.price;
+    if($scope.preShipping.product != undefined) {
+        $scope.shippingInfo.product = $scope.preShipping.product.description;
+    }
+
+    $scope.refeshCountries();
+
+}

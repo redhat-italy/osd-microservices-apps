@@ -14,14 +14,11 @@ public class MySimpleVerticle extends AbstractVerticle {
 
       StaticHandler staticHandler = new StaticHandlerImpl();
 
-      router.get("/").handler(rc -> {
-          rc.response().end("Welcome");
-      });
       router.get("/api").handler(rc -> {
           rc.response().end(new JsonObject().put("name", "my-awesome-api").put("version", 1).encode());
       });
 
-      router.route("/frontend/*").handler(staticHandler);
+      router.route("/*").handler(staticHandler);
 
       vertx.createHttpServer()
               .requestHandler(router::accept)
