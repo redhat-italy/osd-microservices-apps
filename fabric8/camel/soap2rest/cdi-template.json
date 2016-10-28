@@ -1,0 +1,326 @@
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+        "annotations": {
+            "iconClass": "icon-jboss",
+            "description": "Application template for CDI Camel applications built using S2I.",
+            "tags": "camel,java,cdi,xpaas",
+            "version": "0.0.1"
+        },
+        "name": "camel-cdi-basic-s2i"
+    },
+    "labels": {},
+    "parameters": [
+        {
+            "description": "The name for the application.",
+            "name": "APP_NAME",
+            "value": "s2i-quickstart-cdi-camel",
+            "required": true
+        },
+        {
+            "description": "Git source URI for application",
+            "name": "GIT_REPO",
+            "value": "https://github.com/redhat-italy/osd-microservices-apps/",
+            "required": true
+        },
+        {
+            "description": "Git branch/tag reference",
+            "name": "GIT_REF",
+            "value": "master",
+            "required": false
+        },
+        {
+            "description": "Path within Git project to build; empty for root project directory.",
+            "name": "CONTEXT_DIR",
+            "value": "camel/soap2rest",
+            "required": false
+        },
+        {
+            "description": "Namespace in which the ImageStreams for Red Hat Middleware images are installed. These ImageStreams are normally installed in the openshift namespace. You should only need to modify this if you've installed the ImageStreams in a different namespace/project.",
+            "name": "IMAGE_STREAM_NAMESPACE",
+            "value": "openshift",
+            "required": true
+        },
+        {
+	      "name": "SERVICE_NAME",
+	      "value": "s2i-qs-cdi-camel",
+	      "description": "Exposed Service name"
+	    },
+	    {
+	      "name": "BUILDER_VERSION",
+	      "value": "1.0",
+	      "description": "Builder version"
+	    },
+	    {
+	      "name": "APP_VERSION",
+	      "value": "2.2.0.redhat-079",
+	      "description": "Application version"
+	    },
+	    {
+	      "name": "MAVEN_ARGS",
+	      "value": "package -DskipTests -e",
+	      "description": "Arguments passed to mvn in the build"
+	    },
+	    {
+	      "name": "MAVEN_ARGS_APPEND",
+	      "description": "Extra arguments passed to mvn, e.g. for multi-module builds"
+	    },
+	    {
+	      "name": "ARTIFACT_DIR",
+	      "description": "Maven build directory"
+	    },
+	    {
+	      "generate": "expression",
+	      "name": "BUILD_SECRET",
+	      "description": "The secret needed to trigger a build",
+	      "from": "[a-zA-Z0-9]{8}"
+	    },
+	    {
+            "description": "Custom hostname for http service route.  Leave blank for default hostname, e.g.: <application-name>-<project>.<default-domain-suffix>",
+            "name": "HOSTNAME_HTTP",
+            "value": "",
+            "required": false
+        }
+    ],
+    "objects": [
+        {
+            "kind": "Service",
+            "apiVersion": "v1",
+            "spec": {
+                "ports": [
+                    {
+                        "port": 8080,
+                        "targetPort": 8080
+                    }
+                ],
+                "selector": {
+                    "deploymentConfig": "${APP_NAME}"
+                }
+            },
+            "metadata": {
+                "name": "${APP_NAME}",
+                "labels": {
+                    "application": "${APP_NAME}"
+                },
+                "annotations": {
+                    "description": "The web server's http port."
+                }
+            }
+        },
+        {
+            "kind": "Route",
+            "apiVersion": "v1",
+            "id": "${APP_NAME}-http",
+            "metadata": {
+                "name": "${APP_NAME}",
+                "labels": {
+                    "application": "${APP_NAME}"
+                },
+                "annotations": {
+                    "description": "Route for application's http service."
+                }
+            },
+            "spec": {
+                "host": "${HOSTNAME_HTTP}",
+                "to": {
+                    "name": "${APP_NAME}"
+                }
+            }
+        },
+        {
+	      "kind": "ImageStream",
+	      "apiVersion": "v1",
+	      "metadata": {
+	        "name": "${APP_NAME}",
+	        "creationTimestamp": null,
+	        "labels": {
+	          "component": "${APP_NAME}",
+	          "container": "java",
+	          "group": "quickstarts",
+	          "project": "${APP_NAME}",
+	          "provider": "s2i",
+	          "version": "${APP_VERSION}"
+	        }
+	      },
+	      "spec": {},
+	      "status": {
+	        "dockerImageRepository": ""
+	      }
+	    },
+        {
+            "kind": "BuildConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "${APP_NAME}",
+                "labels": {
+	                  "component": "${APP_NAME}",
+			          "container": "java",
+			          "group": "quickstarts",
+			          "project": "${APP_NAME}",
+			          "provider": "s2i",
+			          "version": "${APP_VERSION}"
+                }
+            },
+            "spec": {
+                "source": {
+                    "type": "Git",
+                    "git": {
+                        "uri": "${GIT_REPO}",
+                        "ref": "${GIT_REF}"
+                    },
+                    "contextDir": "${CONTEXT_DIR}"
+                },
+                "strategy": {
+                    "type": "Source",
+                    "sourceStrategy": {
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "namespace": "${IMAGE_STREAM_NAMESPACE}",
+                            "name": "fis-java-openshift:${BUILDER_VERSION}"
+                        },
+			            "forcePull": true,
+			            "env": [
+			              {
+			                "name": "BUILD_LOGLEVEL",
+			                "value": "5"
+			              },
+			              {
+			                "name": "ARTIFACT_DIR",
+			                "value": "${ARTIFACT_DIR}"
+			              },
+			              {
+			                "name": "MAVEN_ARGS",
+			                "value": "${MAVEN_ARGS}"
+			              },
+			              {
+			                "name": "MAVEN_ARGS_APPEND",
+			                "value": "${MAVEN_ARGS_APPEND}"
+			              }
+			            ]
+                    }
+                },
+                "output": {
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "${APP_NAME}:latest"
+                    }
+                },
+                "triggers": [
+                    {
+                        "type": "GitHub",
+                        "github": {
+                            "secret": "${BUILD_SECRET}"
+                        }
+                    },
+                    {
+                        "type": "Generic",
+                        "generic": {
+                            "secret": "${BUILD_SECRET}"
+                        }
+                    },
+                    {
+                        "type": "ImageChange",
+                        "imageChange": {}
+                    },
+                    {
+                        "type": "ConfigChange"
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "DeploymentConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "${APP_NAME}",
+                "labels": {
+                      "component": "${APP_NAME}",
+			          "container": "java",
+			          "group": "quickstarts",
+			          "project": "${APP_NAME}",
+			          "provider": "s2i",
+			          "version": "${APP_VERSION}"
+                }
+            },
+            "spec": {
+                "strategy": {
+                    "type": "Recreate"
+                },
+                "triggers": [
+                    {
+                        "type": "ImageChange",
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "${APP_NAME}"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "${APP_NAME}:latest"
+                            }
+                        }
+                    },
+                    {
+                        "type": "ConfigChange"
+                    }
+                ],
+                "replicas": 1,
+                "selector": {
+                     "component": "${APP_NAME}",
+			          "container": "java",
+			          "deploymentconfig": "${APP_NAME}",
+			          "group": "quickstarts",
+			          "project": "${APP_NAME}",
+			          "provider": "s2i",
+			          "version": "${APP_VERSION}"
+                },
+                "template": {
+                    "metadata": {
+                        "name": "${APP_NAME}",
+                        "labels": {
+                              "component": "${APP_NAME}",
+				              "container": "java",
+				              "deploymentconfig": "${APP_NAME}",
+				              "group": "quickstarts",
+				              "project": "${APP_NAME}",
+				              "provider": "s2i",
+				              "version": "${APP_VERSION}"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "${APP_NAME}",
+				                "image": "library/${APP_NAME}:latest",
+				                "readinessProbe": {
+				                  "exec": {
+				                    "command": [
+				                      "/bin/bash",
+				                      "-c",
+				                      "(curl -f 127.0.0.1:8778) >/dev/null 2>&1; test $? != 7"
+				                    ]
+				                  },
+				                  "initialDelaySeconds": 30,
+				                  "timeoutSeconds": 5
+				                },
+                                "ports": [
+                                    {
+                                        "name": "jolokia",
+                                        "containerPort": 8778,
+                                        "protocol": "TCP"
+                                    },
+                                    {
+                                        "name": "http",
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
