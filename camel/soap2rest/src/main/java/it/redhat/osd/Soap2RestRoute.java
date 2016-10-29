@@ -34,7 +34,7 @@ public class Soap2RestRoute extends RouteBuilder {
     private Endpoint logEndpoint;
     
     @Inject
-    @Uri("cxfrs://http://localhost:8778/?resourceClasses=it.redhat.osd.ShippingEndpoint")
+    @Uri("cxfrs://http://localhost:8080/?resourceClasses=it.redhat.osd.ShippingEndpoint")
     private Endpoint restEndpoint;
 
     @Inject
@@ -49,10 +49,14 @@ public class Soap2RestRoute extends RouteBuilder {
     		.convertBodyTo(String.class)
     		    .to("freemarker:it/redhat/osd/soapTemplate.ftl")
     		    	.removeHeaders("*")
-	    		       .to(soapWsEndpoint)
-	    		       		.setBody(xpath("//return",String.class))
-	    		       			.marshal().json()
-	    		       					.to(logEndpoint);
+    		    		.hystrix()
+    		    	      	    .to(soapWsEndpoint)
+    		    	      		.setBody(xpath("//return",String.class))
+    		    	      .onFallback()
+    		    	            .transform().constant("Shipping Info Unavailable")
+    		    	      .end() 
+		    		       			.marshal().json()
+		    		       					.to(logEndpoint);
     }	
 
 }
