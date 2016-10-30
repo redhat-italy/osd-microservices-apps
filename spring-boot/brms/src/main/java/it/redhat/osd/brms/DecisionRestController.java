@@ -32,7 +32,7 @@ public class DecisionRestController {
     @CrossOrigin
     @RequestMapping(value="/api/brms/ds/order", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody Order order(@RequestBody Order order) {
-        Order calculatedOrder = decisionService.getResult(order);
+        Order calculatedOrder = decisionService.applyRules(order);
         return calculatedOrder;
     }
 

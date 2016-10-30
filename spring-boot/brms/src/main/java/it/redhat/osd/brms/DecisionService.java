@@ -20,8 +20,7 @@ public class DecisionService {
         this.kieContainer = kieContainer;
     }
 
-    public Order getResult(Order order){
-        logger.info("===> working with KIE Session.");
+    public Order applyRules(Order order){
         KieSession kieSession = kieContainer.newKieSession("OSDKSession");
         kieSession.insert(order);
         kieSession.fireAllRules();
