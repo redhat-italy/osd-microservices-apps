@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div ng-class="{'form-group' : true, 'has-error' : regForm.country.$error.required, 'has-success' : !regForm.country.$error.required}">
-                <label for="country" class="col-sm-2 control-label">Product:</label>
+                <label for="country" class="col-sm-2 control-label">Country:</label>
                 <div class="col-sm-10">
                     <select name="country" id="country"  ng-model="shippingInfo.country" class="form-control" placeholder="Select Country" required autofocus>
                         <option ng-repeat="country in countries" value="{{country.value}}">
