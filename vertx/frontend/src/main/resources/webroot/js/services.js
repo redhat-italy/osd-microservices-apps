@@ -37,7 +37,7 @@ angular.module('quoteService', ['ngResource']).
 
 angular.module('shippingService', ['ngResource']).
     factory('Shipping', function($resource){
-  return $resource('http://localhost:8380/api/shipping/:Country', {});
+  return $resource('http://localhost:8080/api/shipping/:Country', {});
 });
 
 angular.module('countriesService', ['ngResource']).
