@@ -13,17 +13,17 @@ public class ProductsEndPoint {
 
         Product p1 = new Product();
         p1.setId("1");
-        p1.setDescription("Description 1");
+        p1.setDescription("Chocolate Cookies");
         p1.setPrice(100);
 
         Product p2 = new Product();
         p2.setId("1");
-        p2.setDescription("Description 2");
+        p2.setDescription("Delicious Ice Cream");
         p2.setPrice(200);
 
         Product p3 = new Product();
         p3.setId("1");
-        p3.setDescription("Description 3");
+        p3.setDescription("Marvelouse Cheese Cake");
         p3.setPrice(300);
 
         products = new ArrayList<>();
