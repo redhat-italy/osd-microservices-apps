@@ -29,6 +29,9 @@ JSON objects are formatted using following template:
 
 If object is not found, HTTP 404 will be returned.
 
+
+
+
 ======================================
 
 ## Offers:
@@ -138,6 +141,14 @@ Everything else will come back with a default value
 
 ## Starting locally all services:
 
+###DOCCHER
+
+##AllInOne.
+```
+./standalone.sh -Djboss.server.base.dir='$JBOSS_HOME/allInOne' -DSHIPPING_SOAP_ENDPOINT=localhost:8080
+```
+
+
 ### USERS
 ```
 http://localhost:8081/api/users
@@ -145,12 +156,36 @@ cd ./go/users/
 ./users -port=8081
 ```
 
+
+### ORDER
+```
+http://localhost:8380/api/brms/ds/order
+cd ./spring-boot/brms/
+mvn clean install -Dmaven.test.skip=true
+mvn spring-boot:run  -Drun.jvmArguments='-Dserver.port=8380'
+
+[TO TEST, IN ANOTHER SHELL]
+curl -X POST -H 'Content-Type: application/json' -d '{"customer_id":"Test","product_id":"Test","quantity":"6","discount":0}' 'http://localhost:8380/api/brms/ds/order'
+```
+
+
 ### PRODUCTS
 ```
 http://localhost:8082/api/products/
 cd ./wildfly-swarm/products/
 mvn wildfly-swarm:run 
 ```
+
+### FRONTEND
+http://localhost:8080/#/
+
+```
+cd ./vertx/frontend/
+mvn clean install -Dmaven.test.skip=true
+mvn package
+java -jar ./target/simple-web-application-3.3.3-fat.jar 
+```
+
 
 ### OFFERS
 ```
@@ -168,17 +203,6 @@ cp -r ../standalone ../offers
 cd ./eap7/offers-ha/
 mvn clean install -Dmaven.test.skip=true
 mvn wildfly:deploy -Dwildfly.port=10090
-```
-
-### ORDER
-```
-http://localhost:8380/api/brms/ds/order
-cd ./spring-boot/brms/
-mvn clean install -Dmaven.test.skip=true
-mvn spring-boot:run  -Drun.jvmArguments='-Dserver.port=8380'
-
-[TO TEST, IN ANOTHER SHELL]
-curl -X POST -H 'Content-Type: application/json' -d '{"customer_id":"Test","product_id":"Test","quantity":"6","discount":0}' 'http://localhost:8380/api/brms/ds/order'
 ```
 
 ### SHIPPING
@@ -200,13 +224,6 @@ mvn exec:java -DSHIPPING_SOAP_ENDPOINT=localhost:8580 -DBINDING_PORT=8680
 ``
 
 
-### FRONTEND
-```
-cd ./vertx/frontend/
-mvn clean install -Dmaven.test.skip=true
-mvn package
-java -jar ./target/simple-web-application-3.3.3-fat.jar 
-```
 
 
 

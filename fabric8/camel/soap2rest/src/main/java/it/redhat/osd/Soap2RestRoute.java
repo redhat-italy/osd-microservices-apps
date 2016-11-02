@@ -49,15 +49,13 @@ public class Soap2RestRoute extends RouteBuilder {
     		.convertBodyTo(String.class)
     		    .to("freemarker:it/redhat/osd/soapTemplate.ftl")
     		    	.removeHeaders("*")
-    		    		.hystrix()
+    		        	.hystrix()
     		    	      	    .to(soapWsEndpoint)
     		    	      		.setBody(xpath("//return",String.class))
     		    	      .onFallback()
     		    	            .transform().constant("Shipping Info Unavailable")
     		    	      .end() 
 		    		       			.marshal().json()
-		    		       			.setHeader("Access-Control-Allow-Headers", constant("Content-Type"))
-		    		       		    .setHeader("Access-Control-Allow-Origin", constant("*"))
 		    		       					.to(logEndpoint);
     }	
 
