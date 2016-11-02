@@ -34,7 +34,7 @@ public class Soap2RestRoute extends RouteBuilder {
     private Endpoint logEndpoint;
     
     @Inject
-    @Uri("cxfrs://http://0.0.0.0:8080/?resourceClasses=it.redhat.osd.ShippingEndpoint")
+    @Uri("cxfrs://http://0.0.0.0:{{BINDING_PORT:8080}}/?resourceClasses=it.redhat.osd.ShippingEndpoint")
     private Endpoint restEndpoint;
 
     @Inject
@@ -56,6 +56,8 @@ public class Soap2RestRoute extends RouteBuilder {
     		    	            .transform().constant("Shipping Info Unavailable")
     		    	      .end() 
 		    		       			.marshal().json()
+		    		       			.setHeader("Access-Control-Allow-Headers", constant("Content-Type"))
+		    		       		    .setHeader("Access-Control-Allow-Origin", constant("*"))
 		    		       					.to(logEndpoint);
     }	
 

@@ -134,4 +134,83 @@ CH
 
 Everything else will come back with a default value
 
+======================================
+
+## Starting locally all services:
+
+### USERS
+```
+http://localhost:8081/api/users
+cd ./go/users/
+./users -port=8081
+```
+
+### PRODUCTS
+```
+http://localhost:8082/api/products/
+cd ./wildfly-swarm/products/
+mvn wildfly-swarm:run 
+```
+
+### OFFERS
+```
+http://localhost:8180/api/offers
+http://localhost:8180/api/shipping/countries
+
+[Change the dir to your EAP install dir]
+export JBOSS_HOME="/home/xyz/Documents/Demo/osday/jboss-eap-7.0/"
+cd $JBOSS_HOME/bin
+rm -rf ../offers/
+cp -r ../standalone ../offers
+./standalone.sh -Djboss.server.base.dir=$JBOSS_HOME/offers -Djboss.socket.binding.port-offset=100
+
+[IN ANOTHER SHELL]
+cd ./eap7/offers-ha/
+mvn clean install -Dmaven.test.skip=true
+mvn wildfly:deploy -Dwildfly.port=10090
+```
+
+### ORDER
+```
+http://localhost:8380/api/brms/ds/order
+cd ./spring-boot/brms/
+mvn clean install -Dmaven.test.skip=true
+mvn spring-boot:run  -Drun.jvmArguments='-Dserver.port=8380'
+
+[TO TEST, IN ANOTHER SHELL]
+curl -X POST -H 'Content-Type: application/json' -d '{"customer_id":"Test","product_id":"Test","quantity":"6","discount":0}' 'http://localhost:8380/api/brms/ds/order'
+```
+
+### SHIPPING
+```
+http://localhost:8680/api/shipping/
+export JBOSS_HOME="/home/xyz/Documents/Demo/osday/jboss-eap-7.0/"
+cd $JBOSS_HOME/bin
+rm -rf ../shippingws
+cp -r ../standalone ../shippingws
+./standalone.sh -Djboss.server.base.dir=$JBOSS_HOME/shippingws -Djboss.socket.binding.port-offset=500
+
+
+[IN ANOTHER SHELL]
+cd ./eap7/shipping-ws/
+mvn clean install -Dmaven.test.skip=true
+mvn wildfly:deploy -Dwildfly.port=10490
+cd ../../fabric8/camel/soap2rest/
+mvn exec:java -DSHIPPING_SOAP_ENDPOINT=localhost:8580 -DBINDING_PORT=8680
+``
+
+
+### FRONTEND
+```
+cd ./vertx/frontend/
+mvn clean install -Dmaven.test.skip=true
+mvn package
+java -jar ./target/simple-web-application-3.3.3-fat.jar 
+```
+
+
+
+
+
+
 
