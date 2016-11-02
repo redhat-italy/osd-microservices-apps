@@ -7,13 +7,14 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 	"flag"
+	"strconv"
 )
 
 type User struct {
 	ID        string   `json:"id,omitempty"`
 	Firstname string   `json:"firstname,omitempty"`
 	Lastname  string   `json:"lastname,omitempty"`
-	Mail      string `json:"mail,omitempty"`
+	Mail      string `json:"email,omitempty"`
 }
 
 var users []User
@@ -34,10 +35,9 @@ func GetPeopleEndpoint(w http.ResponseWriter, req *http.Request) {
 }
 
 func CreatePersonEndpoint(w http.ResponseWriter, req *http.Request) {
-	params := mux.Vars(req)
 	var user User
 	_ = json.NewDecoder(req.Body).Decode(&user)
-	user.ID = params["id"]
+	user.ID = strconv.Itoa(len(users)+1)
 	users = append(users, user)
 	json.NewEncoder(w).Encode(user)
 }
