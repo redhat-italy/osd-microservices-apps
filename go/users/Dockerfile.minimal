@@ -1,0 +1,3 @@
+FROM scratch
+ADD users /
+CMD ["/users"]

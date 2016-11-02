@@ -1,0 +1,239 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
+ * contributors by the @authors tag. See the copyright.txt in the
+ * distribution for a full listing of individual contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* Core styles for the page */
+
+@font-face {
+    font-family: "Overpass-Bold"
+    src: url(../gfx/Overpass-Bold.woff)
+}
+
+@font-face {
+    font-family: "Overpass-Light"
+    src: url(../gfx/Overpass-Light.woff)
+}
+
+@font-face {
+    font-family: "Overpass"
+    src: url(../gfx/Overpass-Regular.woff)
+}
+
+.header {
+    background-color: #b30000;
+    font-family: "Overpass-Bold", "Lucida Grande", sans-serif;
+    color: #f2f2f2;
+    padding-left: 100px;
+    padding-top: 100px;
+    background-image: url(../gfx/header-story-tech-product_line_jboss-2000x1357.jpg);
+    background-position: 20% 50%;
+    height: 300px;
+    width: 100%;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left bottom;
+}
+
+.logo {
+   background-image: url(../gfx/redhat.svg);
+   height: 150px;
+   width: 150px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFF;
+  font-family: "Overpass", "Lucida Grande", sans-serif;
+  color:#363636;
+}
+
+#container {
+  margin: 1em auto;
+}
+
+.aside {
+  font-size: 0.9em;
+  float: left;
+  margin: 20px 0;
+  border: 1px solid #D5D5D5;
+  padding: 20px;
+}
+
+#aside ul {
+  padding-left: 30px;
+}
+
+.dualbrand {
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+code {
+  font-size: 1.1em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #369;
+  text-decoration: underline;
+}
+h1 {
+  font-family:  font-family: "Overpass-Bold", "Lucida Grande", sans-serif;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  color:#243446;
+}
+h4 {
+}
+h5 {
+}
+h6 {
+}
+/* Member registration styles */
+span.error {
+  padding-left: 3px;
+  color: red;
+}
+ul.success {
+    list-style: none;
+    padding-left: 3px;
+    color: green;
+}
+form {
+  padding: 3em;
+  border: 1px solid #D5D5D5;
+}
+
+#offers {
+    padding: 3em;
+    border: 1px solid #D5D5D5;
+}
+label {
+  font-weight: bold;
+  color:#363636;
+}
+.register {
+  float: left;
+  margin-left: 85px;
+}
+
+.sbases {
+    margin-top: 4.5em;
+}
+
+.sbasespoc {
+    margin-top: 2em;
+}
+
+.cooltitle {
+    background-position: bottom right;
+    background-image: url("../gfx/bkgd-cloud-crangle-130x130.png");
+    background-color: #252527;
+    background-repeat: no-repeat;
+    color: #f2f2f2;
+    margin 3em;
+}
+
+.custcolor {
+    color: #f2f2f2;
+}
+
+.coolquote {
+    background-position: bottom right;
+    background-image: url("../gfx/bkgd-corporate-crangle-130x130.png");
+    background-color:  #e6e6e6;
+    background-repeat: no-repeat;
+    margin 3em;
+}
+
+.offerslist {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.offerslink {
+     color: #f2f2f2;
+}
+
+.centeral {
+    text-align: center;
+    vertical-align: middle;
+}
+
+hr {
+    border-width: 3px;
+}
+
+.logo {
+    margin-top: 1em;
+    width: 250px;
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logosmall {
+    margin-top: 3em;
+    width: 150px;
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.oselogo {
+    height: 100px;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centerall {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fadein,
+.fadeout {
+    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+}
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+    display: block !important;
+}
+
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+    display: block !important;
+}
+
+

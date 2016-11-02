@@ -2,10 +2,23 @@ package it.redhat.osd.brms.rules;
 
 import it.redhat.osd.model.Order;
 
-rule silver when
-    o : Order( quantity > 2 )
+rule "silver"
+salience 50
+when
+    $o : Order( quantity > 2, quantity <= 5 )
 then
-    System.out.println("\n===> Applying 5 points of discount.");
-    modify( o ) { discount += 5 }
-    retract(o);
+    System.out.println("\n===> [Silver Order] Applying discount.");
+    modify( $o ) { discount += 5 }
+    retract( $o )
 end
+
+rule "gold"
+salience 100
+when
+    $o : Order( quantity > 5 )
+then
+    System.out.println("\n===> [Gold Order] Applying discount.");
+    modify( $o ) { discount += 10 }
+    retract( $o )
+end
+

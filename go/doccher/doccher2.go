@@ -29,6 +29,7 @@ func main() {
 }
 
 func parent() {
+	fmt.Printf("running %v as pid %d\n", os.Args[2:], os.Getpid())
 	cmd := exec.Command("/proc/self/exe", append([]string{"child"}, os.Args[2:]...)...)
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWPID | syscall.CLONE_NEWNS,
@@ -47,7 +48,6 @@ func child() {
 	cmd.Stderr = os.Stderr
 	must(cmd.Run())
 }
-
 
 func must(err error) {
 	if err != nil {

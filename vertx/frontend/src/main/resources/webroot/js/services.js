@@ -42,6 +42,6 @@ angular.module('shippingService', ['ngResource']).
 
 angular.module('countriesService', ['ngResource']).
     factory('Countries', function($resource){
-  return $resource('http://localhost:8380/api/shipping/countries', {});
+  return $resource('http://localhost:8180/api/shipping/countries', {});
 });
 

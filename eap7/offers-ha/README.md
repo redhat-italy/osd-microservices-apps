@@ -20,8 +20,9 @@ The application this project produces is designed to be run on Red Hat JBoss Ent
 All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven 3.1.1 or later.
 
 
+## Deploy on EAP
 
-## Start the JBoss EAP Server
+### Start the JBoss EAP Server
 
 
 1. Open a command prompt and navigate to the root of the JBoss EAP directory.
@@ -31,7 +32,7 @@ All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven
         For Windows: EAP7_HOME\bin\standalone.bat
 
  
-## Build and Deploy the Quickstart
+### Build and Deploy the application
 
 
 1. Make sure you have started the JBoss EAP server as described above.
@@ -44,7 +45,7 @@ All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven
 
 
 
-## Undeploy the Archive
+### Undeploy the Archive
 
 
 1. Make sure you have started the JBoss EAP server as described above.
@@ -52,6 +53,19 @@ All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven
 3. When you are finished testing, type this command to undeploy the archive:
 
         mvn wildfly:undeploy
+        
+
+## Deploy On Openshift
+
+
+In order to deploy on Openshift, just create a new eap70-basic-s2i application, pointing it to the correct github location. 
+All was tested with Openshift 3.2 and 3.3 . 
+If you want to showcase the clustering of EAP on Openshift, you have to ensure the correct rights to your app.
+A quite simple way (not that much sophisticated) is to give following command:
+
+oadm policy add-cluster-role-to-user cluster-reader system:serviceaccount:project_name:default
+
+
         
 ## JSON DataModel
 
@@ -77,4 +91,4 @@ GET, POST and DELETE are implemented.
 
 If passing ID as path param, it must be equals to ID into JSON payload. If not, ID path param will overwrite ID present into JSON payload.
 
-<!-- Build and Deploy the Quickstart to OpenShift - Coming soon! -->
+The data produced by the service is stored in web session, so if configured properly, the application may be used to showcase EAP clustering.
