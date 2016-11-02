@@ -1,0 +1,29 @@
+<!-- A list of registered members -->
+<!-- If there are no members registered, instead of showing the table, we show a simple message. -->
+<h2>Lead Management</h2>
+
+ <em ng-show="members.length == 0">No registered members.</em>
+ <div class="table-responsive">
+     <table ng-hide="members.length == 0" class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Name</th>
+                 <th>Surname</th>
+                 <th>Email</th>
+                 <th>REST URL</th>
+             </tr>
+         </thead>
+         <tr ng-repeat="member in members | orderBy:orderBy">
+             <td>{{member.id}}</td>
+             <td>{{member.firstname}}</td>
+             <td>{{member.lastname}}</td>
+             <td>{{member.mail}}</td>
+             <td><a href="http://localhost:8081/api/users/{{member.id}}">/api/users/{{member.id}}</a></td>
+             <td><input type="button" ng-click="deleteUsers()" name="remove" id="remove"  class="btn btn-danger" value="Delete"/></td>
+         </tr>
+     </table>
+ </div>
+ <div>
+     REST URL for all members: <a href="http://localhost:8081/api/users">/api/users</a>
+ </div>

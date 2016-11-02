@@ -17,6 +17,9 @@ All you need to build this project is Java 8.0 (Java SDK 1.8) or later and Maven
 
         For Linux:   EAP7_HOME/bin/standalone.sh
         For Windows: EAP7_HOME\bin\standalone.bat
+        
+In order to start it, pass the correct env variable:
+./standalone.sh -DSHIPPING_SOAP_ENDPOINT=localhost:8080
 
  
 ## Build and Deploy the Quickstart
