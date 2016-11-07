@@ -53,4 +53,3 @@ This image is built just with the binary and is just a few Mb.
 CGO_ENABLED=0 go build -a -installsuffix cgo -o users .
 sudo docker build -f Dockerfile.minimal .
 ```
-
