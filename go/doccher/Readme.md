@@ -11,15 +11,15 @@ https://github.com/jpetazzo/docker-busybox/raw/master/rootfs.tar
 
 ```
 mkdir /home/doccher
-tar xvf images/rootfs.tar /home/doccher
+tar xvf images/rootfs.tar -C /home/doccher
 ```
-if the second command doesn't work you can also try `tar xvf images/rootfs.tar -C /home/docker`. 
 
 ## Usage (from source)
 
 **All the following commands need to be executed as a privileged user (i.e. `root` or using `sudo`)**
 
 ```
+export PATH=$PATH:/bin
 go run doccher.go run bash
 ```
 
@@ -27,6 +27,7 @@ go run doccher.go run bash
 
 ```
 go build doccher.go
+export PATH=$PATH:/bin
 ./doccher run bash
 ```
 
