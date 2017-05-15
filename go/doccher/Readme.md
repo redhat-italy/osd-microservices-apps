@@ -20,7 +20,7 @@ tar xvf images/rootfs.tar -C /home/doccher
 
 ```
 export PATH=$PATH:/bin
-go run doccher.go run bash
+go run doccher.go run /bin/bash
 ```
 
 ## Usage (from binary)
@@ -28,7 +28,7 @@ go run doccher.go run bash
 ```
 go build doccher.go
 export PATH=$PATH:/bin
-./doccher run bash
+./doccher run /bin/bash
 ```
 
 ## Credits
